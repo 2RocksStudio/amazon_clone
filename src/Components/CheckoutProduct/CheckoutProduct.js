@@ -1,11 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 // import StarRateIcon from "@material-ui/icons/StarRate";
 import { toast } from "react-toastify";
 import Undo from "../Toast/Toast";
 import Rating from "@material-ui/lab/Rating";
 import { useStateValue } from "../../StateProvider/StateProvider";
 import "./CheckoutProduct.scss";
-const CheckoutProduct = (props) => {
+const CheckoutProduct = forwardRef((props, ref) => {
   const { data, hideButton } = props;
   const [{ basket, toRemove }, dispatch] = useStateValue();
 
@@ -39,7 +39,7 @@ const CheckoutProduct = (props) => {
     );
   };
   return (
-    <div className="checkoutProduct">
+    <div className="checkoutProduct" ref={ref}>
       <img className="checkoutProduct__image" src={data.image} />
 
       <div className="checkoutProduct__info">
@@ -62,6 +62,6 @@ const CheckoutProduct = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default CheckoutProduct;
